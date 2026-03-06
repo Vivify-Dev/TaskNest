@@ -51,9 +51,11 @@ select {
 }
 
 .app-shell {
+  --stack-gap-tight: 12px;
+  --stack-gap-loose: 16px;
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 0;
 }
 
 .top-bar {
@@ -112,11 +114,22 @@ select {
 
 .primary-action-row {
   display: flex;
-  justify-content: flex-start;
+  width: 100%;
+}
+
+.top-bar + .primary-action-row {
+  margin-top: var(--stack-gap-tight);
 }
 
 .primary-button--add-task {
-  min-height: 42px;
+  width: 100%;
+  min-height: 44px;
+  padding-inline: 20px;
+  text-align: center;
+}
+
+.primary-action-row + .app-panel {
+  margin-top: var(--stack-gap-loose);
 }
 
 .app-panel {
@@ -510,7 +523,8 @@ select {
   }
 
   .app-shell {
-    gap: 12px;
+    --stack-gap-tight: 10px;
+    --stack-gap-loose: 14px;
   }
 
   .top-bar {
@@ -519,7 +533,6 @@ select {
   }
 
   .primary-button--add-task {
-    width: 100%;
     min-height: 44px;
   }
 
