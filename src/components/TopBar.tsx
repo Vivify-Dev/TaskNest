@@ -1,10 +1,6 @@
 import checklistIcon from '../../assets/checklist.png'
 
-interface TopBarProps {
-  onAdd: () => void
-}
-
-const TopBar = ({ onAdd }: TopBarProps) => (
+const TopBar = () => (
   <header className="top-bar">
     <div className="top-bar-brand">
       <img
@@ -18,9 +14,6 @@ const TopBar = ({ onAdd }: TopBarProps) => (
         <p className="app-subtitle">Internal Task Tracker</p>
       </div>
     </div>
-    <button className="primary-button" type="button" onClick={onAdd}>
-      + Add task
-    </button>
   </header>
 )
 

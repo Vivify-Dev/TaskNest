@@ -12,13 +12,13 @@
 
   --bg: #eef2f7;
   --panel: #ffffff;
-  --panel-muted: #f7f8fb;
-  --border: #d9e0ea;
-  --text-muted: #556074;
+  --panel-muted: #f5f7fb;
+  --border: #d4deea;
+  --text-muted: #59657b;
   --accent: #2f6f62;
   --accent-strong: #255a50;
   --danger: #b5483c;
-  --shadow-soft: 0 16px 40px rgba(27, 36, 53, 0.08);
+  --shadow-soft: 0 12px 30px rgba(27, 36, 53, 0.1);
   --shadow-strong: 0 18px 50px rgba(22, 32, 50, 0.18);
 }
 
@@ -53,19 +53,19 @@ select {
 .app-shell {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 18px;
 }
 
 .top-bar {
-  --top-bar-title-size: 20px;
-  --top-bar-title-line-height: 30px;
+  --top-bar-title-size: 21px;
+  --top-bar-title-line-height: 29px;
   --top-bar-subtitle-size: 13px;
-  --top-bar-subtitle-line-height: 19.5px;
-  --top-bar-text-gap: 4px;
+  --top-bar-subtitle-line-height: 18px;
+  --top-bar-text-gap: 3px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 20px 24px;
+  justify-content: flex-start;
+  padding: 18px 22px;
   background: var(--panel);
   border: 1px solid var(--border);
   border-radius: 18px;
@@ -99,7 +99,8 @@ select {
   font-size: var(--top-bar-title-size);
   line-height: var(--top-bar-title-line-height);
   font-weight: 600;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.015em;
+  color: #172033;
 }
 
 .app-subtitle {
@@ -109,6 +110,15 @@ select {
   color: var(--text-muted);
 }
 
+.primary-action-row {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.primary-button--add-task {
+  min-height: 42px;
+}
+
 .app-panel {
   background: var(--panel);
   border: 1px solid var(--border);
@@ -116,6 +126,16 @@ select {
   padding: 18px 20px 24px;
   box-shadow: var(--shadow-soft);
   animation: panel-in 260ms ease;
+}
+
+.panel-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--panel-muted);
 }
 
 .app-footer {
@@ -129,23 +149,39 @@ select {
 }
 
 .filter-tabs {
-  display: inline-flex;
-  flex-wrap: wrap;
+  display: flex;
+  flex-wrap: nowrap;
   gap: 6px;
+  width: 100%;
   padding: 6px;
   border-radius: 999px;
   border: 1px solid var(--border);
   background: var(--panel-muted);
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+.filter-tabs::-webkit-scrollbar {
+  display: none;
 }
 
 .filter-tab {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
   border: none;
   background: transparent;
   color: var(--text-muted);
-  padding: 8px 16px;
+  min-height: 40px;
+  padding: 0 16px;
   border-radius: 999px;
   font-size: 13px;
   font-weight: 500;
+  white-space: nowrap;
   cursor: pointer;
 }
 
@@ -156,7 +192,6 @@ select {
 }
 
 .upcoming-range-toggle {
-  margin-top: 10px;
   display: inline-flex;
   gap: 4px;
   padding: 4px;
@@ -185,10 +220,15 @@ select {
 .task-list {
   list-style: none;
   padding: 0;
-  margin: 18px 0 0;
+  margin: 0;
   display: flex;
   flex-direction: column;
   gap: 12px;
+}
+
+.panel-controls + .task-list,
+.panel-controls + .empty-state {
+  margin-top: 14px;
 }
 
 .task-row {
@@ -331,7 +371,7 @@ select {
 }
 
 .empty-state {
-  margin-top: 20px;
+  margin-top: 0;
   padding: 40px 20px;
   border-radius: 16px;
   border: 1px dashed var(--border);
@@ -469,10 +509,46 @@ select {
     padding: 28px 18px 48px;
   }
 
+  .app-shell {
+    gap: 12px;
+  }
+
   .top-bar {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
+    padding: 16px 18px;
+    border-radius: 16px;
+  }
+
+  .primary-button--add-task {
+    width: 100%;
+    min-height: 44px;
+  }
+
+  .app-panel {
+    padding: 14px 14px 18px;
+    border-radius: 16px;
+  }
+
+  .panel-controls {
+    padding: 10px;
+    gap: 8px;
+  }
+
+  .filter-tab {
+    min-height: 44px;
+    padding: 0 15px;
+  }
+
+  .panel-controls + .task-list,
+  .panel-controls + .empty-state {
+    margin-top: 12px;
+  }
+
+  .task-list {
+    gap: 10px;
+  }
+
+  .task-row {
+    padding: 12px 14px;
   }
 
   .task-row {
@@ -486,6 +562,10 @@ select {
 
   .task-actions {
     justify-content: flex-start;
+  }
+
+  .empty-state {
+    padding: 30px 16px;
   }
 }
 

@@ -253,16 +253,27 @@ const App = () => {
 
   return (
     <div className="app-shell">
-      <TopBar onAdd={openCreateModal} />
+      <TopBar />
+      <div className="primary-action-row">
+        <button
+          className="primary-button primary-button--add-task"
+          type="button"
+          onClick={openCreateModal}
+        >
+          + Add task
+        </button>
+      </div>
       <div className="app-panel">
-        <FilterTabs
-          filters={FILTERS}
-          selected={selectedFilter}
-          onSelect={setSelectedFilter}
-        />
-        {selectedFilter === 'upcoming' ? (
-          <UpcomingRangeToggle value={upcomingRange} onChange={setUpcomingRange} />
-        ) : null}
+        <div className="panel-controls">
+          <FilterTabs
+            filters={FILTERS}
+            selected={selectedFilter}
+            onSelect={setSelectedFilter}
+          />
+          {selectedFilter === 'upcoming' ? (
+            <UpcomingRangeToggle value={upcomingRange} onChange={setUpcomingRange} />
+          ) : null}
+        </div>
         <TaskList
           tasks={filteredTasks}
           emptyMessage={currentEmptyMessage}
